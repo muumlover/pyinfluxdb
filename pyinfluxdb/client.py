@@ -22,18 +22,16 @@ class InfluxClient(InfluxDBClient):
                  port=8086,
                  username='root',
                  password='root',
-                 database=None,
                  timeout=10,
                  timezone='Asia/Shanghai',
                  **kwargs
                  ):
 
-        super().__init__(host, port, username, password, database, timeout=timeout, **kwargs)
+        super().__init__(host, port, username, password, timeout=timeout, **kwargs)
         self.__host = host
         self.__port = int(port)
         self.__username = username
         self.__password = password
-        self.__database = database
         self.__timeout = timeout
         self.__timezone = timezone
         self.__kwargs = kwargs
@@ -81,16 +79,6 @@ class InfluxClient(InfluxDBClient):
     def _repr_helper(self):
         # Host first...
         options = ['host=%s:%d' % (self.__host, self.__port)]
-        # ... then everything in self._constructor_args...
-        # options.extend(
-        #     option_repr(key, self.__options._options[key])
-        #     for key in self._constructor_args)
-        # # ... then everything else.
-        # options.extend(
-        #     option_repr(key, self.__options._options[key])
-        #     for key in self.__options._options
-        #     if key not in set(self._constructor_args)
-        #     and key != 'username' and key != 'password')
         return ', '.join(options)
 
     def __repr__(self):

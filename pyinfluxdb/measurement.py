@@ -97,6 +97,7 @@ class Measurement(object):
         if not points:
             return None
         point = points[0]
+        point['time'] = parser.parse(point.get('time', ''))
         return point
 
     def find(self, filter=None, desc=True, limit=None, slimit=None):
