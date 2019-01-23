@@ -97,7 +97,7 @@ class Measurement(object):
         if not points:
             return None
         point = points[0]
-        point['time'] = parser.parse(point.get('time', ''))
+        # point['time'] = parser.parse(point.get('time', ''))
         return point
 
     def find(self, filter=None, desc=True, limit=None, slimit=None):
@@ -139,31 +139,7 @@ class Measurement(object):
         points = list(rs.get_points(measurement=self.__name))
         if not points:
             return []
-        for point in points:
-            point['time'] = parser.parse(point.get('time', ''))
-        return points
 
-    # def FILL(self, filter, desc=True, groupbytime=None, groupbytag=None):
-    #
-    #     for k in filter.keys():
-    #         if k in self.key_words:
-    #             raise Exception('key {} is keyword'.format(k))
-    #     kwargs_str_list = ["{} = '{}'".format(k, v) for k, v in filter.items()]
-    #     # condition = '{measurement}'.format(measurement=self.__name)
-    #     kwargs_str = None
-    #     if kwargs_str_list:
-    #         kwargs_str = ' AND '.join(kwargs_str_list)
-    #
-    #     if groupbytime is not None:
-    #         groupby = 'time({time}),*'.format(time=groupbytime)
-    #
-    #     if groupbytag is not None and len(groupbytag) == 2:
-    #         groupby = 'tag({tag}),{value}'.format(time=groupbytag[0], value=groupbytag[1])
-    #
-    #     rs = self._find(filter=kwargs_str, desc=desc, groupby=groupby)
-    #     if rs is None:
-    #         return None
-    #     points = list(rs.get_points(measurement=self.__name))
-    #     if not points:
-    #         return []
-    #     return points
+        # for point in points:
+        #     point['time'] = parser.parse(point.get('time', ''))
+        return points

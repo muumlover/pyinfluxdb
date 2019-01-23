@@ -1,4 +1,2 @@
 # Dev/Deployment
 influxdb
-pytz
-python-dateutil
