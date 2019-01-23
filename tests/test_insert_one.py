@@ -6,6 +6,7 @@
 @Software: PyCharm
 @Blog    : https://blog.muumlover.com
 """
+from dateutil import parser
 
 
 def test_insert_one():
@@ -22,9 +23,10 @@ def test_insert_one():
     measure = db.test_measure
     measure.insert_one(tags={'number': number}, fields={'value': value, 'speed': speed})
     point = measure.find_one({'number': number})
+    assert point is not None
     assert point.get('value', None) == value
     assert point.get('speed', None) == speed
-    assert datetime.now(tz=tz) - point.get('time', None) < timedelta(minutes=1)
+    assert datetime.now(tz=tz) - parser.parse(point.get('time', None)) < timedelta(minutes=1)
 
 
 def test_insert_one_2():

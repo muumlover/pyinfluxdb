@@ -5,10 +5,11 @@ from datetime import timedelta
 from dateutil import parser
 
 from pyinfluxdb.client import InfluxClient
+from pyinfluxdb.static import FILL
 
 logger = logging.getLogger(__name__)
 
-__all__ = ['InfluxClient']
+__all__ = ['InfluxClient', 'FILL']
 
 
 def time_to_local(time_in):
