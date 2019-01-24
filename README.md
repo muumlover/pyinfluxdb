@@ -1,7 +1,7 @@
 pyinfluxdb
 ===============================
 
-version number: 0.1.2
+version number: 0.1.3
 author: pyinfluxdb
 
 Overview
